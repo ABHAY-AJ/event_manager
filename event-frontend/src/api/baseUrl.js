@@ -1,1 +1,1 @@
-export const baseUrl = "http://localhost:5000/api/v3/app/events"
+export const baseUrl = "https://event-manager-skd8.onrender.com"
