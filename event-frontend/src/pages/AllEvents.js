@@ -11,12 +11,7 @@ const AllEvents = () => {
   useEffect(() => {
     axios.get(`${baseUrl}/all`)
       .then(res => {
-        console.log("API Response:", res.data); // Debugging line
-        if (Array.isArray(res.data)) {
-          setEvents(res.data);
-        } else {
-          setEvents([]); // Ensure events is always an array
-        }
+        setEvents(res.data);
         setLoading(false);
       })
       .catch(err => {
@@ -25,7 +20,6 @@ const AllEvents = () => {
         setLoading(false);
       });
   }, []);
-  
 
   if (loading) return <p className="text-center text-xl">Loading events...</p>;
   if (error) return <p className="text-center text-red-500">{error}</p>;

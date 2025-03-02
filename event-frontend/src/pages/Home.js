@@ -9,20 +9,9 @@ const Home = () => {
 
   useEffect(() => {
     axios.get(API_URL)
-      .then(res => {
-        console.log("API Response:", res.data); // Debug response
-        if (Array.isArray(res.data)) {
-          setEvents(res.data);
-        } else {
-          setEvents([]); // Ensure it's always an array
-        }
-      })
-      .catch(err => {
-        console.error("Error fetching events:", err);
-        setEvents([]); // Set to empty array to prevent errors
-      });
+      .then(res => setEvents(res.data))
+      .catch(err => console.error("Error fetching events:", err));
   }, []);
-  
 
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this event?")) return;
